@@ -7,7 +7,6 @@ from services.errors import (
     DisplayConnectionError,
 )
 from services.app import WeatherApp
-from utils.logger import logger
 
 def check_connections(i2c_display: I2C, i2c_scanner: I2C):
     """
@@ -36,8 +35,6 @@ def start():
         asyncio.run(app.run())
     except (SensorConnectionError, DisplayConnectionError) as e:
         handle_connection_error(led, e, i2c_display)
-    except Exception as e:
-        logger.error(f"Fatal error: {e}")
     finally:
         led.off()
 
