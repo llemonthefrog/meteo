@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from machine import Pin
 
-@dataclass(frozen=True)
 class Config:
     # --- I2C ---
     I2C_SCANNER_ID: int = 0
