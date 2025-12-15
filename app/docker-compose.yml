@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:7
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build: .
+    container_name: weather_service
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/app
+    command: python main.py
+    restart: unless-stopped
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      TG_TOKEN: ${TG_TOKEN}
+
+volumes:
+  mongo_data:
