@@ -25,14 +25,14 @@ def predict_weather(data: list[WeatherData]) -> str:
     if avg_h > 95 and avg_t < 7:
         return "🌫 Высокая вероятность тумана"
 
+    if avg_t < 2 and avg_h > 85 and avg_p < 1008:
+        return "🌫 Возможен снег"
+
     if avg_h > 85:
         if avg_p < 1005:
             return "🌧 Высокая вероятность дождя"
         if avg_p < 1008 and trend_p < 0:
             return "🌧 Возможен дождь"
-
-    if avg_t < 2 and avg_h > 85 and avg_p < 1008:
-        return "🌫 Возможен снег"
 
     if avg_h < 70 and trend_p > 0:
         return "☀️ Осадков не ожидается"

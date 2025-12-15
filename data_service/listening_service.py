@@ -5,7 +5,7 @@ from pymongo import MongoClient
 from time import time
 from dotenv import load_dotenv
 
-SERIAL_PORT = "/dev/cu.usbmodem1201"
+SERIAL_PORT = "/dev/cu.usbmodem31201"
 BAUDRATE = 115200
 
 load_dotenv()
