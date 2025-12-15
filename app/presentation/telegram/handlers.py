@@ -42,7 +42,7 @@ async def current_handler(callback: CallbackQuery, weather_service: WeatherServi
         "🌤 Погода в данный момент:\n"
         f"🌡 Температура: {weather.temperature}°C\n"
         f"💧 Влажность: {weather.humidity}%\n"
-        f"🔽 Давление: {weather.pressure} Pa"
+        f"🔽 Давление: {weather.pressure} hPa"
     )
     if callback.message.text != msg:
         await callback.message.edit_text(msg, reply_markup=main_menu)
